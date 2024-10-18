@@ -1,0 +1,334 @@
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: 'Roboto Mono', monospace;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; display: flex; justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #f6f6f6, #ffffff);
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 162, 255, 0.15) 10%, transparent 10%);
+    background-size: 50px 50px;
+    animation: floatingSand 10s linear infinite;
+}
+
+@keyframes floatingSand {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    100% {
+        transform: translateX(100px) translateY(100px);
+    }
+}
+
+#rowsandcourses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; align-items: center; width: 100%; margin: 0 auto; align-self: center;
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: 'Roboto Mono', monospace;
+    color: #4a4a4a;
+}
+
+#gpa-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    margin: 0 auto; align-self: center;
+    max-width: 100%;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e0e0e0;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+}
+
+#gpa-form::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/sandpaper.png');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.row {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px; justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.course, .grade, .credits {
+    flex: 1;
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: 'Roboto Mono', monospace;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+    width: 100%;
+    max-width: none;
+}
+
+.course:focus, .grade:focus, .credits:focus {
+    box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.5);
+    outline: none;
+}
+
+.include-row {
+    accent-color: #808080;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.include-row:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.5);
+}
+
+#gpa-Buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#calculate {
+    background-color: #808080;
+    color: #ffffff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+#calculate:hover {
+    background-color: #6e6e6e;
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+#add-row, #reset {
+    background-color: #e0e0e0;
+    color: #333333;
+    padding: 12px 25px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+#add-row:hover, #reset:hover {
+    background-color: #d0d0d0;
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.delete-row {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ce7575;
+    font-size: 1.5em; margin-left: auto;
+    transition: color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.delete-row:hover {
+    color: #bb2424;
+    transform: scale(1.2);
+    box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.4);
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    color: #333333;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+    animation: textFadeIn 2s ease;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+.fade {
+    animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#gpa-result {
+    text-align: center;
+    font-size: 1.2em;
+    color: #333333;
+    margin-top: 20px;
+    animation: fadeInUp 2s ease-in-out;
+    font-weight: bold;
+}
+
+.about-container {
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 800px;
+    margin: 40px auto; align-self: center;
+    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    width: 90%;
+}
+
+.about-container h2 {
+    font-size: 2em;
+    color: #333333;
+}
+
+.about-container p {
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.contact-button {
+    background-color: #808080;
+    color: #ffffff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 20px;
+}
+
+.contact-button:hover {
+    background-color: #6e6e6e;
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+input[type="number"], select {
+    transition: box-shadow 0.3s ease;
+}
+
+input[type="number"]:focus, select:focus {
+    box-shadow: 0px 0px 20px rgba(0, 162, 255, 0.5);
+    outline: none;
+}
+
+@keyframes textFadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+#github-link, #linkedin-link {
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#github-link:hover, #linkedin-link:hover {
+    color: #6e6e6e;
+}
+
+.about-container a {
+    display: block;
+    margin-top: 10px;
+    font-size: 1em;
+}
+
+@media screen and (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        padding: 10px;
+    }
+
+    #gpa-form {
+        padding: 20px;
+        width: 90%; margin: 0 auto;
+        margin: 0 auto;
+    }
+
+    .row {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .course, .grade, .credits {
+        width: 100%;
+        max-width: none;
+    }
+
+    #gpa-Buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    #calculate, #add-row, #reset {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+        text-align: center;
+    }
+}
